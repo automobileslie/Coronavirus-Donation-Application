@@ -18,7 +18,47 @@ margin-top: 2em;
   width: 100%
 }
 
-.featured-listing{
-  width: 20em;
-  height: 15em;
+#container-for-featured-listings{
+  display: flex;
+  justify-content: center;
 }
+
+.featured-listing{
+  width: 40%;
+  height: 20%;
+}
+
+.login-and-signup-messages{
+
+}
+
+
+.toggle-login{
+color: skyblue;
+font-size: 1em;
+}
+
+.toggle-login:hover{
+  color: black;
+}
+
+.login-and-signup-form-fields{
+  width: 20%;
+  height: 5%;
+
+}
+
+.containers-for-login-page{
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  
+}
+
+.submit-buttons{
+  width: 10%;
+  height: 5%;
+  
+}
+

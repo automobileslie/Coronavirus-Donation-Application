@@ -17,7 +17,12 @@ state={
 ],
   requestListings: [{item: "Band-aids", description: "keep the germs out of any cuts you have", quantity: 5, location: "Arizona", image: "./Images/bandaid_box.jpg"}, {item: "Alcohol pads", description: "clean open wounds or anything the Coronavirus might have touched", quantity: 4, location: "Michigan", image: "./Images/alcohol_pads.jpg"}],
   approvedRequestListings: [],
-  approvedDonorListings: []
+  approvedDonorListings: [],
+
+  donationListingShowPageExpanded: false,
+  requestListingShowPageExpanded: false,
+  aShowPageIsExpanded: false,
+  currentlyExpandedListing: []
 }
 
 // componentDidMount=(){
@@ -25,8 +30,40 @@ state={
 
 // }
 
+goToDonationListingShowPage=(donation)=>{
+  this.setState({
+    donationListingShowPageExpanded: true,
+    aShowPageIsExpanded: true,
+    currentlyExpandedListing: donation
+  })
+}
+
+goToRequestListingShowPage=(request)=>{
+  this.setState({
+    requestListingShowPageExpanded: true,
+    aShowPageIsExpanded: true,
+    currentlyExpandedListing: request   
+  })
+}
+
+returnToListingsIndex=()=>{
+
+  console.log("clicked")
+
+  this.setState({
+    currentlyExpandedListing: [],
+    aShowPageIsExpanded: false,
+    requestListingShowPageExpanded: false,
+    donationListingShowPageExpanded: false
+
+  })
+}
+
 
   render(){
+
+    console.log(this.state.currentlyExpandedListing)
+
   return (
     <div>
     <Router>
@@ -35,10 +72,16 @@ state={
   
      <Switch>
 
-       <Route exact path= '/' render={(renderProps)=> <Home {...renderProps}/>}/>
-       <Route exact path= '/login' render={(renderProps)=> <Login {...renderProps}/>}></Route>
-  <Route exact path= '/listings' render={(renderProps)=> <Listings {...renderProps} donationListings= {this.state.donationListings} requestListings= {this.state.requestListings}/>}></Route>
-       <Route></Route>
+      <Route exact path= '/' render={(renderProps)=> <Home {...renderProps}/>}/>
+      <Route exact path= '/login' render={(renderProps)=> <Login {...renderProps}/>}></Route>
+      <Route exact path= '/listings' render={(renderProps)=> <Listings {...renderProps} donationListings= {this.state.donationListings} 
+      requestListings= {this.state.requestListings}
+      goToRequestListingShowPage={this.goToRequestListingShowPage}
+      goToDonationListingShowPage={this.goToDonationListingShowPage}
+      aShowPageIsExpanded={this.state.aShowPageIsExpanded}
+      currentlyExpandedListing={this.state.currentlyExpandedListing}
+      returnToListingsIndex={this.returnToListingsIndex}/>}></Route>
+      <Route></Route>
 
      </Switch>
 

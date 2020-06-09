@@ -22,6 +22,7 @@ state={
 
   render(){
   return (
+    <div>
     <Router>
       
       <NavigationBar />
@@ -36,6 +37,7 @@ state={
      </Switch>
 
      </Router>
+     </div>
   
   );
 }

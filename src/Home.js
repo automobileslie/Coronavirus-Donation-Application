@@ -47,13 +47,13 @@ renderImages=()=>{
 
     render(){
         return(
-            <React.Fragment>
+            <div className= "home-page-container">
         <h2 className= "heading">Welcome to the Coronavirus Donation Center</h2>
         <h3 className= "heading">Featured Listings</h3>
         <div id= "container-for-featured-listings">
         {this.renderImages()}
         </div>
-        </React.Fragment>
+        </div>
         )
     }
 }

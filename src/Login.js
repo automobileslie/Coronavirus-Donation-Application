@@ -67,10 +67,10 @@ toggleSignIn=()=>{
                 <p className="login--and-signup-messages">{this.state.SuccessMessage}</p>
                 }
 
-            <h3>Create an account or <p className="toggle-login" onClick= {this.toggleSignIn}>Sign in</p>
+            <h3 className= "heading-for-forms">Create an account or <p className="toggle-login" onClick= {this.toggleSignIn}>Sign in</p>
 </h3> 
 
-            <form onSubmit={this.submitSignupForm}>
+            <form onSubmit={this.submitSignupForm} className= "forms">
                 <input className="login-and-signup-form-fields" type="text" name="signupUsername" value={this.state.signupUsername} placeholder="create username" onChange={this.formFilledOut}/>
                 <br></br>
                 <input className="login-and-signup-form-fields" type="text" name="signupPassword" value={this.state.signupPassword} placeholder="enter a password" onChange={this.formFilledOut}/>
@@ -78,7 +78,7 @@ toggleSignIn=()=>{
                 <input className="submit-buttons" type="submit" value="Sign up" />
             </form>
 
-            </div>
+            // </div>
 
             :
 
@@ -90,7 +90,7 @@ toggleSignIn=()=>{
                 <p className="login--and-signup-messages">{this.state.SuccessMessage}</p>
                 }
 
-            <h3>Sign in or <p className= "toggle-login" onClick= {this.toggleSignIn}>Create an account</p></h3> 
+            <h3 className= "heading-for-forms">Sign in or <p className= "toggle-login" onClick= {this.toggleSignIn}>Create an account</p></h3> 
             
             
             {
@@ -100,7 +100,7 @@ toggleSignIn=()=>{
             <p className="login-messages">{this.state.SuccessMessage}</p>
              }
 
-            <form onSubmit={this.loginFormSubmitted}>
+            <form onSubmit={this.loginFormSubmitted} className= "forms">
                 <input className="login-and-signup-form-fields" type="text" name="loginUsername" value={this.state.loginUsername} placeholder="enter username" onChange={this.formFilledOut}/>
                 <br></br>
                 <input className="login-and-signup-form-fields" type="text" name="loginPassword" value={this.state.loginPassword} placeholder="enter password" onChange={this.formFilledOut}/>

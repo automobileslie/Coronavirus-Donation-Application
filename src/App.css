@@ -1,31 +1,32 @@
-body{
-  font-size: 1.5em;
+/* body{
+  font-size: 100%;
   display: flex;
   justify-content: center;
   align-items: baseline;
   text-align: center;
-}
+} */
 
 .heading{
 text-align: center;
-margin-top: 2em;
+margin-top: 5%;
 
 }
 
 #navigation-bar{
-  text-align: center;
-  margin-top: 1.25em;
-  width: 100%
+  margin-top: 2%;
+  width: 100%;
 }
 
 #container-for-featured-listings{
-  display: flex;
-  justify-content: center;
+
+  text-align: center;
+  
 }
 
 .featured-listing{
   width: 40%;
   height: 20%;
+  text-align: center;
 }
 
 .login-and-signup-messages{
@@ -35,7 +36,6 @@ margin-top: 2em;
 
 .toggle-login{
 color: skyblue;
-font-size: 1em;
 }
 
 .toggle-login:hover{
@@ -45,6 +45,7 @@ font-size: 1em;
 .login-and-signup-form-fields{
   width: 20%;
   height: 5%;
+  margin: 1.5%;
 
 }
 
@@ -53,12 +54,35 @@ font-size: 1em;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  
 }
 
 .submit-buttons{
   width: 10%;
   height: 5%;
-  
+  margin-top: 2%;
+}
+
+.tabs{
+  margin: 2%;
+  padding: 2%; 
+  width: 100%;
+  color: black;
+  text-decoration: none;
+}
+
+.homepage-container{
+  font-size: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  text-align: center;
+}
+
+.forms{
+  text-align: center;
+}
+
+.heading-for-forms{
+  text-align: center;
 }
 

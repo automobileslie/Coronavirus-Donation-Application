@@ -78,7 +78,7 @@ toggleSignIn=()=>{
                 <input className="submit-buttons" type="submit" value="Sign up" />
             </form>
 
-            // </div>
+            </div>
 
             :
 

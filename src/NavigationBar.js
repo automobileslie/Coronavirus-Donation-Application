@@ -29,7 +29,7 @@ to="/donations"
 exact
 className="navbar-link"
 activeClassName="navbar-link-active"
-> Donation Listings
+> Donations
 </NavLink>
 
 <NavLink
@@ -37,7 +37,7 @@ to="/requests"
 exact
 className="navbar-link"
 activeClassName="navbar-link-active"
-> Requests for Supplies
+> Requests
 </NavLink>
 
 

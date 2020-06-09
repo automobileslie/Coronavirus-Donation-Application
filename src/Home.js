@@ -11,7 +11,7 @@ state={
 componentDidMount=()=>{
 
     let settingInterval=()=>{
-        if(this.state.currentImage<=2){
+        if(this.state.currentImage<=3){
             this.setState({
                 currentImage: this.state.currentImage + 1
                     })
@@ -19,7 +19,7 @@ componentDidMount=()=>{
 
         else{
             this.setState({
-                currentImage: this.state.currentImage-3
+                currentImage: this.state.currentImage-4
             })
         }
     }
@@ -33,7 +33,9 @@ renderImages=()=>{
 {img: <img  className='featured-listing' src= {require('./Images/alcohol_pads.jpg')} alt= 'box of alcohol pads'/>, name: "Alcohol Pads"},
 {img: <img className='featured-listing' src= {require('./Images/bandaid_box.jpg')} alt= 'box of bandaids'/>, name: "Bandaids"},
 {img: <img className='featured-listing' src= {require('./Images/mask.jpg')} alt= 'face mask'/>, name: "Face Mask"},
-{img: <img className='featured-listing' src= {require('./Images/acetaminophen.jpg')} alt= 'acetaminophen'/>, name: "Acetaminophen"}
+{img: <img className='featured-listing' src= {require('./Images/acetaminophen.jpg')} alt= 'acetaminophen'/>, name: "Acetaminophen"},
+{img: <img className='featured-listing' src= {require('./Images/latex_gloves.jpg')} alt= 'latex gloves'/>, name: "Latex Gloves"}
+
     ]
 
     return <div id= "featured-product-container">

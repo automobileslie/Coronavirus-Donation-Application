@@ -9,13 +9,14 @@ import Listings from './Listings';
 export default class App extends React.Component {
 
 state={
-  donationListings: [{item: "Latex Gloves", description: "protects your hands from the coronavirus", quantity: 2, location: "New York", image: "./Images/latex_gloves.jpg"}, 
-  {item: "Acetaminophen", description: "brings the fever down", quantity: 1, location: "Chicago", image: "./Images/acetaminophen.jpg"},
-  {item: "Mask", description: "cover your face!", quantity: 4, location: "San Francisco", image: "./Images/mask.jpg"},
-  {item: "Band-aids", description: "keep the germs out of any cuts you have", quantity: 5, location: "Arizona", image: "./Images/bandaid_box.jpg"},
-  {item: "Alcohol pads", description: "clean open wounds or anything the Coronavirus might have touched", quantity: 4, location: "Michigan", image: "./Images/alcohol_pads.jpg"}
+  donationListings: [{item: "Latex Gloves", description: "protects your hands from the coronavirus", quantity: "2 boxes", location: "New York", image: "./Images/latex_gloves.jpg"}, 
+  {item: "Acetaminophen", description: "brings the fever down", quantity: "1 bottle", location: "Chicago", image: "./Images/acetaminophen.jpg"},
+  {item: "Mask", description: "cover your face!", quantity: "4 boxes", location: "San Francisco", image: "./Images/mask.jpg"},
+  {item: "Band-aids", description: "keep the germs out of any cuts you have", quantity: "5 boxes", location: "Arizona", image: "./Images/bandaid_box.jpg"},
+  {item: "Alcohol pads", description: "clean open wounds or anything the Coronavirus might have touched", quantity: "4 boxes", location: "Michigan", image: "./Images/alcohol_pads.jpg"}
 ],
-  requestListings: [{item: "Band-aids", description: "keep the germs out of any cuts you have", quantity: 5, location: "Arizona", image: "./Images/bandaid_box.jpg"}, {item: "Alcohol pads", description: "clean open wounds or anything the Coronavirus might have touched", quantity: 4, location: "Michigan", image: "./Images/alcohol_pads.jpg"}],
+  requestListings: [{item: "Band-aids", description: "keep the germs out of any cuts you have", quantity: "5 boxes", location: "Arizona", image: "./Images/bandaid_box.jpg"}, 
+  {item: "Alcohol pads", description: "clean open wounds or anything the Coronavirus might have touched", quantity: "4 boxes", location: "Michigan", image: "./Images/alcohol_pads.jpg"}],
   approvedRequestListings: [],
   approvedDonorListings: [],
 
@@ -33,6 +34,7 @@ state={
 goToDonationListingShowPage=(donation)=>{
   this.setState({
     donationListingShowPageExpanded: true,
+    requestListingShowPageExpanded: false,
     aShowPageIsExpanded: true,
     currentlyExpandedListing: donation
   })
@@ -41,15 +43,13 @@ goToDonationListingShowPage=(donation)=>{
 goToRequestListingShowPage=(request)=>{
   this.setState({
     requestListingShowPageExpanded: true,
+    donationListingShowPageExpanded: false,
     aShowPageIsExpanded: true,
     currentlyExpandedListing: request   
   })
 }
 
 returnToListingsIndex=()=>{
-
-  console.log("clicked")
-
   this.setState({
     currentlyExpandedListing: [],
     aShowPageIsExpanded: false,
@@ -61,9 +61,6 @@ returnToListingsIndex=()=>{
 
 
   render(){
-
-    console.log(this.state.currentlyExpandedListing)
-
   return (
     <div>
     <Router>
@@ -80,7 +77,9 @@ returnToListingsIndex=()=>{
       goToDonationListingShowPage={this.goToDonationListingShowPage}
       aShowPageIsExpanded={this.state.aShowPageIsExpanded}
       currentlyExpandedListing={this.state.currentlyExpandedListing}
-      returnToListingsIndex={this.returnToListingsIndex}/>}></Route>
+      returnToListingsIndex={this.returnToListingsIndex}
+      donationListingShowPageExpanded={this.state.donationListingShowPageExpanded}
+      requestListingShowPageExpanded={this.state.requestListingShowPageExpanded}/>}></Route>
       <Route></Route>
 
      </Switch>

@@ -65,7 +65,7 @@ returnToListingsIndex=()=>{
     <div>
     <Router>
       
-      <NavigationBar />
+      <NavigationBar returnToListingsIndex={this.returnToListingsIndex}/>
   
      <Switch>
 

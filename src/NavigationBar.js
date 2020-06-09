@@ -13,6 +13,7 @@ to="/"
 exact
 className="navbar-link"
 activeClassName="navbar-link-active"
+onClick={props.returnToListingsIndex}
 > Home
 </NavLink>
 
@@ -21,6 +22,7 @@ to="/login"
 exact
 className="navbar-link"
 activeClassName="navbar-link-active"
+onClick={props.returnToListingsIndex}
 > Login/Signup
 </NavLink>
 
@@ -29,6 +31,7 @@ to="/listings"
 exact
 className="navbar-link"
 activeClassName="navbar-link-active"
+onClick={props.returnToListingsIndex}
 > Listings
 </NavLink>
 
@@ -38,6 +41,7 @@ to="/profile"
 exact
 className="navbar-link"
 activeClassName="navbar-link-active"
+onClick={props.returnToListingsIndex}
 > Profile
 </NavLink>
 

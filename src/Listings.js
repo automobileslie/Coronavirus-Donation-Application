@@ -26,11 +26,11 @@ displayTheRequestListings=()=>{
     render(){
         return(
             <React.Fragment>
-    <h2 className= "heading">Donation Listings</h2>
+    <h2 >Donation Listings</h2>
   
        {this.displayTheDonationListings()}
 
-       <h2 className= "heading">Request Listings</h2>
+       <h2>Request Listings</h2>
 
        {this.displayTheRequestListings()}
       

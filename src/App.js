@@ -59,8 +59,28 @@ returnToListingsIndex=()=>{
   })
 }
 
+createANewListing=(listing)=>{
+
+  console.log(listing.type)
+
+  if(listing.type==="Donation"){
+    this.setState({
+    donationListings: [...this.state.donationListings, listing]
+  })
+
+  }
+  else if(listing.type==="Request"){
+    this.setState({
+    requestListings: [...this.state.donationListings, listing]
+    })
+  }
+}
+
 
   render(){
+
+    console.log(this.state.donationListings)
+
   return (
     <div>
     <Router>
@@ -79,7 +99,8 @@ returnToListingsIndex=()=>{
       currentlyExpandedListing={this.state.currentlyExpandedListing}
       returnToListingsIndex={this.returnToListingsIndex}
       donationListingShowPageExpanded={this.state.donationListingShowPageExpanded}
-      requestListingShowPageExpanded={this.state.requestListingShowPageExpanded}/>}></Route>
+      requestListingShowPageExpanded={this.state.requestListingShowPageExpanded}
+      createANewListing={this.createANewListing}/>}></Route>
       <Route></Route>
 
      </Switch>

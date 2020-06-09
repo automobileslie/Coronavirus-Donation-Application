@@ -23,7 +23,6 @@ margin-top: 5%;
 
 }
 
-
 .toggle-login{
 color: skyblue;
 }
@@ -33,7 +32,7 @@ color: skyblue;
 }
 
 .login-and-signup-form-fields{
-  width: 20%;
+  width: 30%;
   height: 5%;
   margin: 1.5%;
 }
@@ -46,7 +45,7 @@ color: skyblue;
 }
 
 .submit-buttons{
-  width: 10%;
+  width: 20%;
   height: 5%;
   margin-top: 2%;
 }
@@ -137,4 +136,22 @@ justify-content: flex-start;
   color: darkgray
 }
 
+.container-for-new-listing-form{
+  background-color: lightgray;
+}
+
+.form-for-new-listings{
+padding-bottom: 3%;
+margin-top: 3%
+}
+
+.input-field-for-new-listing-form{
+  margin: .25%;
+  width: 40%;
+}
+
+.submit-button-for-new-listing{
+  margin-top: .6%;
+  margin-left: .6%
+}
 

@@ -25,28 +25,25 @@ activeClassName="navbar-link-active"
 </NavLink>
 
 <NavLink
-to="/donations"
+to="/listings"
 exact
 className="navbar-link"
 activeClassName="navbar-link-active"
-> Donations
+> Listings
 </NavLink>
+
 
 <NavLink
-to="/requests"
+to="/profile"
 exact
 className="navbar-link"
 activeClassName="navbar-link-active"
-> Requests
+> Profile
 </NavLink>
-
 
 </div>
 
 )
-
-
-
 }
 
 export default NavigationBar;

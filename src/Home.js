@@ -24,7 +24,7 @@ componentDidMount=()=>{
         }
     }
 
-        setInterval(settingInterval, 5000)
+        setInterval(settingInterval, 3000)
         
 }
 

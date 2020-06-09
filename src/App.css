@@ -85,3 +85,21 @@ color: skyblue;
   text-align: center;
 }
 
+.container-for-general-donation-listings{
+display: flex;
+justify-content: flex-start;
+}
+
+.general-listing{
+  text-align: left;
+  width: 20%;
+  height: 20%;
+  margin: 2%;
+}
+
+.background-for-general-listings{
+  background-color: lightgray;
+}
+
+
+

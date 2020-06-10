@@ -11,7 +11,7 @@ export default class App extends React.Component {
 
 state={
 
-  userType:"requestor",
+  userType:"requester",
 
   donationListings: [{item: "Latex Gloves", description: "protects your hands from the coronavirus", quantity: "2 boxes", location: "New York", image: "./Images/latex_gloves.jpg"}, 
   {item: "Acetaminophen", description: "brings the fever down", quantity: "1 bottle", location: "Chicago", image: "./Images/acetaminophen.jpg"},
@@ -43,7 +43,8 @@ state={
   createdANewListing: false,
   typeOfListingExpanded: "",
   newDirectRequestForItem: false,
-  newDirectRequestToDonateItem: false
+  newDirectRequestToDonateItem: false,
+  showSubmissionPage: false
 }
 
 // componentDidMount=()=>{
@@ -73,7 +74,6 @@ goToRequestListingShowPage=(request)=>{
     currentlyExpandedListing: request,  
     createdANewListing: false,
     typeOfListingExpanded: "request"
-
   })
 }
 
@@ -87,7 +87,9 @@ returnToListingsIndex=()=>{
     createdANewListing: false,
     typeOfListingExpanded: "",
     newDirectRequestForItem: false,
-    newDirectRequestToDonate: false
+    newDirectRequestToDonate: false,
+    showSubmissionPage: false
+
   })
 }
 
@@ -95,15 +97,19 @@ createANewListing=(listing)=>{
 
   if(listing.type==="Donation"){
     this.setState({
-    donationListings: [...this.state.donationListings, listing],
-    createdANewListing: true
+      aShowPageIsExpanded: false,
+      donationListings: [...this.state.donationListings, listing],
+      showSubmissionPage: true,
+      createdANewListing: true
   })
 
   }
   else if(listing.type==="Request"){
     this.setState({
-    requestListings: [...this.state.donationListings, listing],
-    createdANewListing: true
+      aShowPageIsExpanded: false,
+      requestListings: [...this.state.donationListings, listing],
+      showSubmissionPage: true,
+      createdANewListing: true
     })
   }
 }
@@ -156,27 +162,44 @@ goToDirectDonationFromProfile=(request)=>{
   })
 }
 
-initiateNewRequestForItem=()=>{
+initiateNewRequestForItem=(item)=>{
+  console.log("clicked")
 this.setState({
-  newDirectRequestForItem: true
+  aShowPageIsExpanded: false,
+  newDirectRequestForItem: true,
+  donorDirectRequestsReceived: [...this.state.donorDirectRequestsReceived, item],
+  showSubmissionPage: true,
 })
 }
 
-initiateNewRequestToDonate=()=>{
+initiateNewRequestToDonate=(item)=>{
+  console.log("clicked")
   this.setState({
-    newDirectRequestToDonateItem: true
+    aShowPageIsExpanded: false,
+    newDirectRequestToDonateItem: true,
+    requestorDirectDonationRequestsReceived: [...this.state.requestorDirectDonationRequestsReceived, item],
+    showSubmissionPage: true
   })
 }
 
-createNewDirectRequestForItem=()=>{
-  //this will trigger the rendering of a form to submit a request for an item that is listed
+// createNewDirectRequestForItem=()=>{
+  
+//   //this will trigger the rendering of a form to submit a request for an item that is listed
 
-}
+// }
 
-createNewDirectRequestToDonate=()=>{
-  //this will trigger the rendering of a form to submit a request to donate to someone who posted a request
+// createNewDirectRequestToDonate=()=>{
+//   //this will trigger the rendering of a form to submit a request to donate to someone who posted a request
 
-}
+// }
+
+// submitNewDirectRequestToDonate=()=>{
+
+// }
+
+// submitNewDirectRequestForItem=()=>{
+  
+// }
 
 
   render(){
@@ -209,7 +232,10 @@ createNewDirectRequestToDonate=()=>{
       initiateNewRequestForItem={this.initiateNewRequestForItem}
       initiateNewRequestToDonate={this.initiateNewRequestToDonate}
       createNewDirectRequestForItem={this.createNewDirectRequestForItem}
-      createNewDirectRequestToDonate={this.createNewDirectRequestToDonate}/>}></Route>
+      createNewDirectRequestToDonate={this.createNewDirectRequestToDonate}
+      newDirectRequestForItem={this.state.newDirectRequestForItem}
+      newDirectRequestToDonate={this.state.newDirectRequestToDonateItem}
+      showSubmissionPage={this.state.showSubmissionPage}/>}></Route>
 
       <Route exact path= '/profile' render={(renderProps)=> <Profile {...renderProps}
       goToRequestListingShowPageFromProfile={this.goToRequestListingShowPageFromProfile}

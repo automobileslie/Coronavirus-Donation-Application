@@ -1,6 +1,6 @@
 import React from 'react';
 import ListingShowPage from './ListingShowPage';
-import SubmittedNewListing from './SubmittedNewListing';
+import SubmissionSuccess from './SubmissionSuccess';
 
 
 export default class Listings extends React.Component{
@@ -63,9 +63,12 @@ formCompleted=(event)=>{
 
             !this.props.aShowPageIsExpanded ?
 
-            this.props.createdANewListing ?
+            this.props.showSubmissionPage ?
 
-            <SubmittedNewListing returnToListingsIndex={this.props.returnToListingsIndex}/>
+            <SubmissionSuccess returnToListingsIndex={this.props.returnToListingsIndex} 
+            newDirectRequestForItem={this.props.newDirectRequestForItem} 
+            newDirectRequestToDonateItem={this.props.newDirectRequestToDonateItem}
+            createdANewListing={this.props.createdANewListing}/>
 
             :
 

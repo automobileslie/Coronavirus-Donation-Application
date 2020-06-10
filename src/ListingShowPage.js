@@ -31,13 +31,13 @@ displayInfoAboutRequest=()=>{
             
             <React.Fragment></React.Fragment>
                 :
-            <button className="button" onClick={this.props.initiateNewRequestForItem}>Request This Donation</button>
+            <button className="button" onClick={()=>this.props.initiateNewRequestForItem(this.props.currentlyExpandedListing)}>Request This Donation</button>
         :
-            this.props.userType==="requestor" ?
+            this.props.userType==="requester" ?
 
             <React.Fragment></React.Fragment>
             :
-            <button className="button" onClick={this.props.initiateNewRequestToDonate}>Fulfill This Request</button>       
+            <button className="button" onClick={()=>this.props.initiateNewRequestToDonate(this.props.currentlyExpandedListing)}>Fulfill This Request</button>       
 }
 
 <button className= "button" onClick={this.props.returnToListingsIndex}>Return to Listings</button>

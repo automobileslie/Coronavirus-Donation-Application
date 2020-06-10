@@ -37,7 +37,8 @@ state={
   requestListingShowPageExpanded: false,
   aShowPageIsExpanded: false,
   currentlyExpandedListing: [],
-  profileListingExpanded: false
+  profileListingExpanded: false,
+  createdANewListing: false
 }
 
 // componentDidMount=(){
@@ -51,6 +52,7 @@ goToDonationListingShowPage=(donation)=>{
     requestListingShowPageExpanded: false,
     aShowPageIsExpanded: true,
     currentlyExpandedListing: donation,
+    createdANewListing: false
   })
 }
 
@@ -59,7 +61,9 @@ goToRequestListingShowPage=(request)=>{
     requestListingShowPageExpanded: true,
     donationListingShowPageExpanded: false,
     aShowPageIsExpanded: true,
-    currentlyExpandedListing: request   
+    currentlyExpandedListing: request,  
+    createdANewListing: false
+
   })
 }
 
@@ -69,8 +73,8 @@ returnToListingsIndex=()=>{
     aShowPageIsExpanded: false,
     requestListingShowPageExpanded: false,
     donationListingShowPageExpanded: false,
-    profileListingExpanded: false
-
+    profileListingExpanded: false,
+    createdANewListing: false
   })
 }
 
@@ -78,13 +82,15 @@ createANewListing=(listing)=>{
 
   if(listing.type==="Donation"){
     this.setState({
-    donationListings: [...this.state.donationListings, listing]
+    donationListings: [...this.state.donationListings, listing],
+    createdANewListing: true
   })
 
   }
   else if(listing.type==="Request"){
     this.setState({
-    requestListings: [...this.state.donationListings, listing]
+    requestListings: [...this.state.donationListings, listing],
+    createdANewListing: true
     })
   }
 }
@@ -95,7 +101,8 @@ goToDonationListingShowPageFromProfile=(donation)=>{
     requestListingShowPageExpanded: false,
     aShowPageIsExpanded: true,
     currentlyExpandedListing: donation,
-    profileListingExpanded: true
+    profileListingExpanded: true,
+    createdANewListing: false
   })
 }
 
@@ -105,7 +112,8 @@ goToRequestListingShowPageFromProfile=(request)=>{
     donationListingShowPageExpanded: false,
     aShowPageIsExpanded: true,
     currentlyExpandedListing: request   ,
-    profileListingExpanded: true
+    profileListingExpanded: true,
+    createdANewListing: false
   })
 }
 
@@ -120,7 +128,7 @@ createNewDirectRequestToDonate=()=>{
 
   render(){
 
-    console.log(this.state.profileListingExpanded)
+    console.log(this.state.createdANewListing)
   return (
     <div>
     <Router>
@@ -143,7 +151,8 @@ createNewDirectRequestToDonate=()=>{
       donationListingShowPageExpanded={this.state.donationListingShowPageExpanded}
       requestListingShowPageExpanded={this.state.requestListingShowPageExpanded}
       createANewListing={this.createANewListing}
-      profileListingExpanded={this.state.profileListingExpanded}/>}></Route>
+      profileListingExpanded={this.state.profileListingExpanded}
+      createdANewListing={this.state.createdANewListing}/>}></Route>
 
       <Route exact path= '/profile' render={(renderProps)=> <Profile {...renderProps}
       directRequests={this.state.directRequests} 

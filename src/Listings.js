@@ -1,5 +1,6 @@
 import React from 'react';
 import ListingShowPage from './ListingShowPage';
+import SubmittedNewListing from './SubmittedNewListing';
 
 
 export default class Listings extends React.Component{
@@ -58,12 +59,15 @@ formCompleted=(event)=>{
 
     render(){
 
-        console.log("hello")
-
-
         return(
 
             !this.props.aShowPageIsExpanded ?
+
+            this.props.createdANewListing ?
+
+            <SubmittedNewListing returnToListingsIndex={this.props.returnToListingsIndex}/>
+
+            :
 
             <div>
                     <h2>Submit a New Listing</h2>
@@ -144,6 +148,7 @@ formCompleted=(event)=>{
              </div>
 
             :
+
                 <ListingShowPage currentlyExpandedListing={this.props.currentlyExpandedListing}
                 returnToListingsIndex={this.props.returnToListingsIndex}
                 donationListingShowPageExpanded={this.props.donationListingShowPageExpanded}

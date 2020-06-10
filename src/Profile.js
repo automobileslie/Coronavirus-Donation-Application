@@ -3,7 +3,7 @@ import ListingShowPage from './ListingShowPage';
 
 export default class Profile extends React.Component{
 
-   // Right now, this is displaying the profile for donors and receivers, but this can be toggled depending on what type of account the user has
+   // Right now, this is displaying the profile for donors and receivers, but this can be conditionally rendered depending on what type of account the user has.
 
 displayDonorListings=()=>{
 

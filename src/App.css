@@ -158,3 +158,24 @@ padding-top: 2%;
 .profile-page-container{
   margin: 4%;
 }
+
+
+.submitted-new-listing-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 5%
+
+}
+
+.submitted-new-listing-icon{
+  font-size: 5em;
+  color: darkgray
+}
+
+#return-to-listings{
+  width: 25%;
+  text-align: center;
+  margin-left: 38%;
+}

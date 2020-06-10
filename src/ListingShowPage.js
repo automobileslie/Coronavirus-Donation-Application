@@ -31,13 +31,13 @@ displayInfoAboutRequest=()=>{
             
             <React.Fragment></React.Fragment>
                 :
-            <button className="button">Request This Donation</button>
+            <button className="button" onClick={this.props.initiateNewRequestForItem}>Request This Donation</button>
         :
             this.props.userType==="requestor" ?
 
             <React.Fragment></React.Fragment>
             :
-            <button className="button">Fulfill This Request</button>       
+            <button className="button" onClick={this.props.initiateNewRequestToDonate}>Fulfill This Request</button>       
 }
 
 <button className= "button" onClick={this.props.returnToListingsIndex}>Return to Listings</button>
@@ -58,9 +58,6 @@ displayInfoAboutRequest=()=>{
 }
     
 render(){
-
-    console.log(this.props.userType)
-
     return(
         this.displayInfoAboutRequest()
         )

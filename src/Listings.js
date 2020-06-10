@@ -153,9 +153,9 @@ formCompleted=(event)=>{
                 returnToListingsIndex={this.props.returnToListingsIndex}
                 donationListingShowPageExpanded={this.props.donationListingShowPageExpanded}
                 profileListingExpanded={this.props.profileListingExpanded}
-                userType={this.props.userType}/> 
-                
-               
+                userType={this.props.userType}
+                initiateNewRequestForItem={this.props.initiateNewRequestForItem}
+                initiateNewRequestToDonate={this.props.initiateNewRequestToDonate}/> 
         )
     }
 }

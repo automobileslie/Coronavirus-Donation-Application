@@ -41,7 +41,9 @@ state={
   currentlyExpandedListing: [],
   profileListingExpanded: false,
   createdANewListing: false,
-  typeOfListingExpanded: ""
+  typeOfListingExpanded: "",
+  newDirectRequestForItem: false,
+  newDirectRequestToDonateItem: false
 }
 
 // componentDidMount=()=>{
@@ -83,7 +85,9 @@ returnToListingsIndex=()=>{
     donationListingShowPageExpanded: false,
     profileListingExpanded: false,
     createdANewListing: false,
-    typeOfListingExpanded: ""
+    typeOfListingExpanded: "",
+    newDirectRequestForItem: false,
+    newDirectRequestToDonate: false
   })
 }
 
@@ -152,17 +156,31 @@ goToDirectDonationFromProfile=(request)=>{
   })
 }
 
+initiateNewRequestForItem=()=>{
+this.setState({
+  newDirectRequestForItem: true
+})
+}
+
+initiateNewRequestToDonate=()=>{
+  this.setState({
+    newDirectRequestToDonateItem: true
+  })
+}
 
 createNewDirectRequestForItem=()=>{
+  //this will trigger the rendering of a form to submit a request for an item that is listed
 
 }
 
 createNewDirectRequestToDonate=()=>{
+  //this will trigger the rendering of a form to submit a request to donate to someone who posted a request
 
 }
 
 
   render(){
+
   return (
     <div>
     <Router>
@@ -187,7 +205,11 @@ createNewDirectRequestToDonate=()=>{
       createANewListing={this.createANewListing}
       profileListingExpanded={this.state.profileListingExpanded}
       createdANewListing={this.state.createdANewListing}
-      userType={this.state.userType}/>}></Route>
+      userType={this.state.userType}
+      initiateNewRequestForItem={this.initiateNewRequestForItem}
+      initiateNewRequestToDonate={this.initiateNewRequestToDonate}
+      createNewDirectRequestForItem={this.createNewDirectRequestForItem}
+      createNewDirectRequestToDonate={this.createNewDirectRequestToDonate}/>}></Route>
 
       <Route exact path= '/profile' render={(renderProps)=> <Profile {...renderProps}
       goToRequestListingShowPageFromProfile={this.goToRequestListingShowPageFromProfile}

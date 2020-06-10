@@ -22,8 +22,6 @@ formFilledOut=(event)=>{
 loginFormSubmitted=(event)=>{
     event.preventDefault();
 
-    console.log("login form submitted");
-
     this.setState({
         loginUsername: "",
         loginPassword: "",

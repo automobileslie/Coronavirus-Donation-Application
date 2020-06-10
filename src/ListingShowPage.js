@@ -5,7 +5,13 @@ export default class DonationListingShowPage extends React.Component{
 
 displayInfoAboutRequest=()=>{
     return <div className="div-for-showpage">
+        
+        {this.props.donationListingShowPageExpanded ?
         <h1>Donation</h1>
+        :
+        <h1>Request</h1>
+        }
+
         <div className="div-for-showpage-info">
             <p className="showpage-item-name">{this.props.currentlyExpandedListing.item}</p>
             <p className="showpage-item-quantity">{this.props.currentlyExpandedListing.quantity}</p>
@@ -20,10 +26,24 @@ displayInfoAboutRequest=()=>{
         <p className="listing-showpage-location">{this.props.currentlyExpandedListing.location}</p>
         </div>
         <button className= "button" onClick={this.props.returnToListingsIndex}>Return to Listings</button>
+
+        {this.props.profileListingExpanded ?
+
+        <button className="button">This button will do something tomorrow</button>
+
+        :
+
+        <React.Fragment></React.Fragment>
+
+        }
+
+
     </div>
 }
     
 render(){
+
+
     return(
         this.displayInfoAboutRequest()
         )

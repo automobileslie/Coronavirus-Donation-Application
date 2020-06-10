@@ -36,7 +36,8 @@ state={
   donationListingShowPageExpanded: false,
   requestListingShowPageExpanded: false,
   aShowPageIsExpanded: false,
-  currentlyExpandedListing: []
+  currentlyExpandedListing: [],
+  profileListingExpanded: false
 }
 
 // componentDidMount=(){
@@ -49,7 +50,7 @@ goToDonationListingShowPage=(donation)=>{
     donationListingShowPageExpanded: true,
     requestListingShowPageExpanded: false,
     aShowPageIsExpanded: true,
-    currentlyExpandedListing: donation
+    currentlyExpandedListing: donation,
   })
 }
 
@@ -67,7 +68,9 @@ returnToListingsIndex=()=>{
     currentlyExpandedListing: [],
     aShowPageIsExpanded: false,
     requestListingShowPageExpanded: false,
-    donationListingShowPageExpanded: false
+    donationListingShowPageExpanded: false,
+    profileListingExpanded: false
+
   })
 }
 
@@ -86,6 +89,26 @@ createANewListing=(listing)=>{
   }
 }
 
+goToDonationListingShowPageFromProfile=(donation)=>{
+  this.setState({
+    donationListingShowPageExpanded: true,
+    requestListingShowPageExpanded: false,
+    aShowPageIsExpanded: true,
+    currentlyExpandedListing: donation,
+    profileListingExpanded: true
+  })
+}
+
+goToRequestListingShowPageFromProfile=(request)=>{
+  this.setState({
+    requestListingShowPageExpanded: true,
+    donationListingShowPageExpanded: false,
+    aShowPageIsExpanded: true,
+    currentlyExpandedListing: request   ,
+    profileListingExpanded: true
+  })
+}
+
 createNewDirectRequestForItem=()=>{
 
 }
@@ -96,6 +119,8 @@ createNewDirectRequestToDonate=()=>{
 
 
   render(){
+
+    console.log(this.state.profileListingExpanded)
   return (
     <div>
     <Router>
@@ -105,7 +130,9 @@ createNewDirectRequestToDonate=()=>{
      <Switch>
 
       <Route exact path= '/' render={(renderProps)=> <Home {...renderProps}/>}/>
+
       <Route exact path= '/login' render={(renderProps)=> <Login {...renderProps}/>}></Route>
+
       <Route exact path= '/listings' render={(renderProps)=> <Listings {...renderProps} donationListings= {this.state.donationListings} 
       requestListings= {this.state.requestListings}
       goToRequestListingShowPage={this.goToRequestListingShowPage}
@@ -115,7 +142,9 @@ createNewDirectRequestToDonate=()=>{
       returnToListingsIndex={this.returnToListingsIndex}
       donationListingShowPageExpanded={this.state.donationListingShowPageExpanded}
       requestListingShowPageExpanded={this.state.requestListingShowPageExpanded}
-      createANewListing={this.createANewListing}/>}></Route>
+      createANewListing={this.createANewListing}
+      profileListingExpanded={this.state.profileListingExpanded}/>}></Route>
+
       <Route exact path= '/profile' render={(renderProps)=> <Profile {...renderProps}
       directRequests={this.state.directRequests} 
       directDonations={this.state.directDonations}
@@ -123,13 +152,14 @@ createNewDirectRequestToDonate=()=>{
       acceptedDonations={this.state.acceptedDonations}
       currentUsersDonationListings={this.state.currentUsersDonationListings}
       currentUsersRequestListings={this.state.currentUsersRequestListings}
-      goToRequestListingShowPage={this.goToRequestListingShowPage}
-      goToDonationListingShowPage={this.goToDonationListingShowPage}
+      goToRequestListingShowPageFromProfile={this.goToRequestListingShowPageFromProfile}
+      goToDonationListingShowPageFromProfile={this.goToDonationListingShowPageFromProfile}
       aShowPageIsExpanded={this.state.aShowPageIsExpanded}
       requestListingShowPageExpanded={this.state.requestListingShowPageExpanded}
       donationListingShowPageExpanded={this.state.donationListingShowPageExpanded}
       currentlyExpandedListing={this.state.currentlyExpandedListing}
-      returnToListingsIndex={this.returnToListingsIndex}/>}></Route>
+      returnToListingsIndex={this.returnToListingsIndex}
+      profileListingExpanded={this.state.profileListingExpanded}/>}></Route>
 
      </Switch>
 

@@ -1,14 +1,15 @@
 import React from 'react';
-import DonationListingShowPage from './DonationListingShowPage';
-import RequestListingShowPage from './RequestListingShowPage';
+import ListingShowPage from './ListingShowPage';
 
 export default class Profile extends React.Component{
+
+   // Right now, this is displaying the profile for donors and receivers, but this can be toggled depending on what type of account the user has
 
 displayDonorListings=()=>{
 
     return this.props.currentUsersDonationListings.map(listing=>{
         return <div>
-<p onClick= {()=>this.props.goToDonationListingShowPage(listing)} className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
+<p onClick= {()=>this.props.goToDonationListingShowPageFromProfile(listing)} className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
         </div>
     })
 
@@ -17,7 +18,7 @@ displayDonorListings=()=>{
 displayRequestListings=()=>{
     return this.props.currentUsersRequestListings.map(listing=>{
         return <div>
-<p onClick= {()=>this.props.goToRequestListingShowPage(listing)} className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
+<p onClick= {()=>this.props.goToRequestListingShowPageFromProfile(listing)} className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
         </div>
     })
 }
@@ -26,7 +27,7 @@ displayDirectRequests=()=>{
 
     return this.props.directRequests.map(listing=>{
         return <div>
-<p onClick= {()=>this.props.goToRequestListingShowPage(listing)} className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
+<p onClick= {()=>this.props.goToRequestListingShowPageFromProfile(listing)} className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
         </div>
     })
 }
@@ -34,7 +35,7 @@ displayDirectRequests=()=>{
 displayDirectDonations=()=>{
     return this.props.directDonations.map(listing=>{
         return <div>
-<p onClick= {()=>this.props.goToDonationListingShowPage(listing)}className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
+<p onClick= {()=>this.props.goToDonationListingShowPageFromProfile(listing)}className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
         </div>
     })
 }
@@ -42,7 +43,7 @@ displayDirectDonations=()=>{
 displayApprovedRequests=()=>{
     return this.props.approvedRequests.map(listing=>{
         return <div>
-<p onClick= {()=>this.props.goToRequestListingShowPage(listing)} className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
+<p onClick= {()=>this.props.goToRequestListingShowPageFromProfile(listing)} className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
         </div>
     })
 }
@@ -50,7 +51,7 @@ displayApprovedRequests=()=>{
 displayAcceptedDonations=()=>{
     return this.props.acceptedDonations.map(listing=>{
         return <div>
-<p onClick= {()=>this.props.goToDonationListingShowPage(listing)} className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
+<p onClick= {()=>this.props.goToDonationListingShowPageFromProfile(listing)} className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
         </div>
     })
 }
@@ -79,16 +80,11 @@ displayAcceptedDonations=()=>{
 
             :
 
-            this.props.requestListingShowPageExpanded ?
 
-            <DonationListingShowPage currentlyExpandedListing={this.props.currentlyExpandedListing}
-            returnToListingsIndex={this.props.returnToListingsIndex}/>
-
-            :
-
-            <RequestListingShowPage currentlyExpandedListing={this.props.currentlyExpandedListing}
-            returnToListingsIndex={this.props.returnToListingsIndex}/>
-
+            <ListingShowPage currentlyExpandedListing={this.props.currentlyExpandedListing}
+            returnToListingsIndex={this.props.returnToListingsIndex}
+            donationListingShowPageExpanded={this.props.donationListingShowPageExpanded}
+            profileListingExpanded={this.props.profileListingExpanded}/>
         )
     }
 }

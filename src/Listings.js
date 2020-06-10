@@ -152,7 +152,8 @@ formCompleted=(event)=>{
                 <ListingShowPage currentlyExpandedListing={this.props.currentlyExpandedListing}
                 returnToListingsIndex={this.props.returnToListingsIndex}
                 donationListingShowPageExpanded={this.props.donationListingShowPageExpanded}
-                profileListingExpanded={this.props.profileListingExpanded}/> 
+                profileListingExpanded={this.props.profileListingExpanded}
+                userType={this.props.userType}/> 
                 
                
         )

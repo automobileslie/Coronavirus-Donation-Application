@@ -25,9 +25,25 @@ displayInfoAboutRequest=()=>{
         <h3>Location</h3>
         <p className="listing-showpage-location">{this.props.currentlyExpandedListing.location}</p>
         </div>
-        <button className= "button" onClick={this.props.returnToListingsIndex}>Return to Listings</button>
+        {this.props.donationListingShowPageExpanded ?
 
-        {this.props.profileListingExpanded ?
+            this.props.userType==="donor" ?
+            
+            <React.Fragment></React.Fragment>
+                :
+            <button className="button">Request This Donation</button>
+        :
+            this.props.userType==="requestor" ?
+
+            <React.Fragment></React.Fragment>
+            :
+            <button className="button">Fulfill This Request</button>       
+}
+
+<button className= "button" onClick={this.props.returnToListingsIndex}>Return to Listings</button>
+
+
+            {this.props.profileListingExpanded ?
 
         <button className="button">This button will do something tomorrow</button>
 
@@ -43,6 +59,7 @@ displayInfoAboutRequest=()=>{
     
 render(){
 
+    console.log(this.props.userType)
 
     return(
         this.displayInfoAboutRequest()

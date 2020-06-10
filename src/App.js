@@ -11,7 +11,7 @@ export default class App extends React.Component {
 
 state={
 
-  userType:"donor",
+  userType:"requestor",
 
   donationListings: [{item: "Latex Gloves", description: "protects your hands from the coronavirus", quantity: "2 boxes", location: "New York", image: "./Images/latex_gloves.jpg"}, 
   {item: "Acetaminophen", description: "brings the fever down", quantity: "1 bottle", location: "Chicago", image: "./Images/acetaminophen.jpg"},
@@ -186,7 +186,8 @@ createNewDirectRequestToDonate=()=>{
       requestListingShowPageExpanded={this.state.requestListingShowPageExpanded}
       createANewListing={this.createANewListing}
       profileListingExpanded={this.state.profileListingExpanded}
-      createdANewListing={this.state.createdANewListing}/>}></Route>
+      createdANewListing={this.state.createdANewListing}
+      userType={this.state.userType}/>}></Route>
 
       <Route exact path= '/profile' render={(renderProps)=> <Profile {...renderProps}
       goToRequestListingShowPageFromProfile={this.goToRequestListingShowPageFromProfile}

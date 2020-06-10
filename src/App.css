@@ -97,6 +97,7 @@ justify-content: flex-start;
 
 .button{
   width: 30%;
+  height: 10%;
   text-align: center;
   margin: 2%;
 }
@@ -165,7 +166,7 @@ padding-top: 2%;
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  margin: 5%
+  margin: 10%
 
 }
 
@@ -178,4 +179,5 @@ padding-top: 2%;
   width: 25%;
   text-align: center;
   margin-left: 38%;
+  height: 10%
 }

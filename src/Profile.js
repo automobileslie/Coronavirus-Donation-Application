@@ -3,57 +3,55 @@ import ListingShowPage from './ListingShowPage';
 
 export default class Profile extends React.Component{
 
-   // Right now, this is displaying the profile for donors and receivers, but this can be conditionally rendered depending on what type of account the user has.
+   // Right now, this is displaying the profile for donors and receivers, but this can be conditionally rendered depending on what type of account the user has.  
 
 displayDonorListings=()=>{
 
-    return this.props.currentUsersDonationListings.map(listing=>{
-        return <div>
-<p onClick= {()=>this.props.goToDonationListingShowPageFromProfile(listing)} className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
-        </div>
+   return this.props.donorListings.map(listing=>{
+    return <div>
+    <p onClick= {()=>this.props.goToDonationListingShowPageFromProfile(listing)} className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
+    </div>     
     })
+}
+        
+displayDirectRequestsReceived=()=>{
+    return this.props.donorDirectRequestsReceived.map(listing=>{
+        return <div>
+        <p onClick= {()=>this.props.goToRequestListingShowPageFromProfile(listing)} className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
+        </div>     
+        })
+}
 
+displayDirectRequestsApproved=()=>{
+    return this.props.donorApprovedRequests.map(listing=>{
+        return <div>
+        <p onClick= {()=>this.props.goToRequestListingShowPageFromProfile(listing)} className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
+        </div>     
+        })
 }
 
 displayRequestListings=()=>{
-    return this.props.currentUsersRequestListings.map(listing=>{
+    return this.props.requestorListings.map(listing=>{
         return <div>
-<p onClick= {()=>this.props.goToRequestListingShowPageFromProfile(listing)} className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
-        </div>
-    })
+        <p onClick= {()=>this.props.goToRequestListingShowPageFromProfile(listing)} className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
+        </div>     
+        })
 }
 
-displayDirectRequests=()=>{
-
-    return this.props.directRequests.map(listing=>{
+displayDirectDonationRequests=()=>{
+    return this.props.requestorDirectDonationRequestsReceived.map(listing=>{
         return <div>
-<p onClick= {()=>this.props.goToRequestListingShowPageFromProfile(listing)} className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
-        </div>
-    })
+        <p onClick= {()=>this.props.goToDonationListingShowPageFromProfile(listing)} className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
+        </div>     
+        })
 }
 
-displayDirectDonations=()=>{
-    return this.props.directDonations.map(listing=>{
+displayAcceptedDonationRequests=()=>{
+    return this.props.requestorAcceptedDonations.map(listing=>{
         return <div>
-<p onClick= {()=>this.props.goToDonationListingShowPageFromProfile(listing)}className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
-        </div>
-    })
-}
-
-displayApprovedRequests=()=>{
-    return this.props.approvedRequests.map(listing=>{
-        return <div>
-<p onClick= {()=>this.props.goToRequestListingShowPageFromProfile(listing)} className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
-        </div>
-    })
-}
-
-displayAcceptedDonations=()=>{
-    return this.props.acceptedDonations.map(listing=>{
-        return <div>
-<p onClick= {()=>this.props.goToDonationListingShowPageFromProfile(listing)} className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
-        </div>
-    })
+        <p onClick= {()=>this.props.goToDonationListingShowPageFromProfile(listing)} className="background-for-general-listings"><img className='general-listing' src= {require(`${listing.image}`)} alt= {listing.item}/></p>
+        </div>     
+        }) 
 }
 
     render(){
@@ -61,25 +59,28 @@ displayAcceptedDonations=()=>{
 
             !this.props.aShowPageIsExpanded ?
 
-            <div className="profile-page-container">
-            <h1>Donor Page</h1>
-            <h2>My Listings</h2>
-            {this.displayDonorListings()}
-            <h2>Direct Requests</h2>
-            {this.displayDirectRequests()}
-            <h2>Accepted</h2>
-            {this.displayAcceptedDonations()}
-            <h1>Requester Page</h1>
-            <h2>My Requests</h2>
-            {this.displayRequestListings()}
-            <h2>Direct Donations</h2>
-            {this.displayDirectDonations()}
-            <h2>Approved</h2>
-            {this.displayApprovedRequests()}
-            </div> 
+                   this.props.userType === "donor" ?
 
+                   <div className="profile-page-container">
+                    <h2>My Listings</h2>
+                    {this.displayDonorListings()}
+                    <h2>Direct Requests Received</h2>
+                    {this.displayDirectRequestsReceived()}
+                    <h2>Direct Requests Approved</h2>
+                    {this.displayDirectRequestsApproved()}
+
+                    </div>
+                :
+
+                <div className="profile-page-container">
+                    <h2>My Listings</h2>
+                    {this.displayRequestListings()}
+                    <h2>Direct Donation Requests Received</h2>
+                    {this.displayDirectDonationRequests()}
+                    <h2>Direct Donation Requests Accepted</h2>
+                    {this.displayAcceptedDonationRequests()}
+                </div> 
             :
-
 
             <ListingShowPage currentlyExpandedListing={this.props.currentlyExpandedListing}
             returnToListingsIndex={this.props.returnToListingsIndex}

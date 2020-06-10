@@ -14,7 +14,7 @@ displayInfoAboutRequest=()=>{
 
         <div className="div-for-showpage-info">
             <p className="showpage-item-name">{this.props.currentlyExpandedListing.item}</p>
-            <p className="showpage-item-quantity">{this.props.currentlyExpandedListing.quantity}</p>
+            <p className="showpage-item-quantity">Quantity: {this.props.currentlyExpandedListing.quantity}</p>
         </div>
 
         <p className="showpage-item-description">{this.props.currentlyExpandedListing.description}</p>

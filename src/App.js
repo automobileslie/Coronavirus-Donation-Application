@@ -10,6 +10,9 @@ import Profile from './Profile';
 export default class App extends React.Component {
 
 state={
+
+  userType:"donor",
+
   donationListings: [{item: "Latex Gloves", description: "protects your hands from the coronavirus", quantity: "2 boxes", location: "New York", image: "./Images/latex_gloves.jpg"}, 
   {item: "Acetaminophen", description: "brings the fever down", quantity: "1 bottle", location: "Chicago", image: "./Images/acetaminophen.jpg"},
   {item: "Mask", description: "cover your face!", quantity: "4 boxes", location: "San Francisco", image: "./Images/mask.jpg"},
@@ -18,30 +21,33 @@ state={
 ],
   requestListings: [{item: "Band-aids", description: "keep the germs out of any cuts you have", quantity: "5 boxes", location: "Arizona", image: "./Images/bandaid_box.jpg"}, 
   {item: "Alcohol pads", description: "clean open wounds or anything the Coronavirus might have touched", quantity: "4 boxes", location: "Michigan", image: "./Images/alcohol_pads.jpg"}],
-  
-  approvedRequests: [{item: "Latex Gloves", description: "protects your hands from the coronavirus", quantity: "2 boxes", location: "New York", image: "./Images/latex_gloves.jpg"}],
  
-  acceptedDonations: [{item: "Mask", description: "cover your face!", quantity: "4 boxes", location: "San Francisco", image: "./Images/mask.jpg"}],
+  requestorDirectDonationRequestsReceived: [{item: "Band-aids", description: "keep the germs out of any cuts you have", quantity: "5 boxes", location: "Arizona", image: "./Images/bandaid_box.jpg"}], 
   
-  directRequests: [{item: "Acetaminophen", description: "brings the fever down", quantity: "1 bottle", location: "Chicago", image: "./Images/acetaminophen.jpg"},
-  {item: "Mask", description: "cover your face!", quantity: "4 boxes", location: "San Francisco", image: "./Images/mask.jpg"}],
+  requestorListings: [{item: "Mask", description: "cover your face!", quantity: "4 boxes", location: "San Francisco", image: "./Images/mask.jpg"}], 
   
-  directDonations: [{item: "Band-aids", description: "keep the germs out of any cuts you have", quantity: "5 boxes", location: "Arizona", image: "./Images/bandaid_box.jpg"},
-  {item: "Alcohol pads", description: "clean open wounds or anything the Coronavirus might have touched", quantity: "4 boxes", location: "Michigan", image: "./Images/alcohol_pads.jpg"}],
+  requestorAcceptedDonations: [{item: "Mask", description: "cover your face!", quantity: "4 boxes", location: "San Francisco", image: "./Images/mask.jpg"}],
 
-  currentUsersDonationListings: [{item: "Acetaminophen", description: "brings the fever down", quantity: "1 bottle", location: "Chicago", image: "./Images/acetaminophen.jpg"}],
-
-  currentUsersRequestListings: [{item: "Mask", description: "cover your face!", quantity: "4 boxes", location: "San Francisco", image: "./Images/mask.jpg"}],
+  donorApprovedRequests: [{item: "Latex Gloves", description: "protects your hands from the coronavirus", quantity: "2 boxes", location: "New York", image: "./Images/latex_gloves.jpg"}],
+  
+  donorDirectRequestsReceived: [{item: "Acetaminophen", description: "brings the fever down", quantity: "1 bottle", location: "Chicago", image: "./Images/acetaminophen.jpg"},
+  {item: "Mask", description: "cover your face!", quantity: "4 boxes", location: "San Francisco", image: "./Images/mask.jpg"}], 
+  
+  donorListings: [{item: "Acetaminophen", description: "brings the fever down", quantity: "1 bottle", location: "Chicago", image: "./Images/acetaminophen.jpg"}],
 
   donationListingShowPageExpanded: false,
   requestListingShowPageExpanded: false,
   aShowPageIsExpanded: false,
   currentlyExpandedListing: [],
   profileListingExpanded: false,
-  createdANewListing: false
+  createdANewListing: false,
+  typeOfListingExpanded: ""
 }
 
-// componentDidMount=(){
+// componentDidMount=()=>{
+
+//   
+//   })
 
 
 // }
@@ -52,7 +58,8 @@ goToDonationListingShowPage=(donation)=>{
     requestListingShowPageExpanded: false,
     aShowPageIsExpanded: true,
     currentlyExpandedListing: donation,
-    createdANewListing: false
+    createdANewListing: false,
+    typeOfListingExpanded: "donation"
   })
 }
 
@@ -62,7 +69,8 @@ goToRequestListingShowPage=(request)=>{
     donationListingShowPageExpanded: false,
     aShowPageIsExpanded: true,
     currentlyExpandedListing: request,  
-    createdANewListing: false
+    createdANewListing: false,
+    typeOfListingExpanded: "request"
 
   })
 }
@@ -74,7 +82,8 @@ returnToListingsIndex=()=>{
     requestListingShowPageExpanded: false,
     donationListingShowPageExpanded: false,
     profileListingExpanded: false,
-    createdANewListing: false
+    createdANewListing: false,
+    typeOfListingExpanded: ""
   })
 }
 
@@ -102,7 +111,8 @@ goToDonationListingShowPageFromProfile=(donation)=>{
     aShowPageIsExpanded: true,
     currentlyExpandedListing: donation,
     profileListingExpanded: true,
-    createdANewListing: false
+    createdANewListing: false,
+    typeOfListingExpanded: "user's donation listing"
   })
 }
 
@@ -113,9 +123,35 @@ goToRequestListingShowPageFromProfile=(request)=>{
     aShowPageIsExpanded: true,
     currentlyExpandedListing: request   ,
     profileListingExpanded: true,
-    createdANewListing: false
+    createdANewListing: false,
+    typeOfListingExpanded: "user's request listing expanded"
   })
 }
+
+goToDirectRequestFromProfile=(request)=>{
+  this.setState({
+    requestListingShowPageExpanded: true,
+    donationListingShowPageExpanded: false,
+    aShowPageIsExpanded: true,
+    currentlyExpandedListing: request   ,
+    profileListingExpanded: true,
+    createdANewListing: false,
+    typeOfListingExpanded: "direct request"
+  })
+}
+
+goToDirectDonationFromProfile=(request)=>{
+  this.setState({
+    requestListingShowPageExpanded: true,
+    donationListingShowPageExpanded: false,
+    aShowPageIsExpanded: true,
+    currentlyExpandedListing: request   ,
+    profileListingExpanded: true,
+    createdANewListing: false,
+    typeOfListingExpanded: "direct donation"
+  })
+}
+
 
 createNewDirectRequestForItem=()=>{
 
@@ -153,12 +189,6 @@ createNewDirectRequestToDonate=()=>{
       createdANewListing={this.state.createdANewListing}/>}></Route>
 
       <Route exact path= '/profile' render={(renderProps)=> <Profile {...renderProps}
-      directRequests={this.state.directRequests} 
-      directDonations={this.state.directDonations}
-      approvedRequests={this.state.approvedRequests} 
-      acceptedDonations={this.state.acceptedDonations}
-      currentUsersDonationListings={this.state.currentUsersDonationListings}
-      currentUsersRequestListings={this.state.currentUsersRequestListings}
       goToRequestListingShowPageFromProfile={this.goToRequestListingShowPageFromProfile}
       goToDonationListingShowPageFromProfile={this.goToDonationListingShowPageFromProfile}
       aShowPageIsExpanded={this.state.aShowPageIsExpanded}
@@ -166,7 +196,14 @@ createNewDirectRequestToDonate=()=>{
       donationListingShowPageExpanded={this.state.donationListingShowPageExpanded}
       currentlyExpandedListing={this.state.currentlyExpandedListing}
       returnToListingsIndex={this.returnToListingsIndex}
-      profileListingExpanded={this.state.profileListingExpanded}/>}></Route>
+      profileListingExpanded={this.state.profileListingExpanded}
+      userType={this.state.userType}
+      requestorDirectDonationRequestsReceived={this.state.requestorDirectDonationRequestsReceived}
+      requestorListings={this.state.requestorListings}
+      requestorAcceptedDonations={this.state.requestorAcceptedDonations}
+      donorApprovedRequests={this.state.donorApprovedRequests}
+      donorDirectRequestsReceived={this.state.donorDirectRequestsReceived}
+      donorListings={this.state.donorListings}/>}></Route>
 
      </Switch>
 

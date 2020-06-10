@@ -127,8 +127,6 @@ createNewDirectRequestToDonate=()=>{
 
 
   render(){
-
-    console.log(this.state.createdANewListing)
   return (
     <div>
     <Router>

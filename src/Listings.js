@@ -81,13 +81,13 @@ formCompleted=(event)=>{
                     <br></br>
                     <input className="input-field-for-new-listing-form" type="text" name="description" value={this.state.description} placeholder="description" onChange={this.formCompleted}/>
                     <br></br>
-                    <input className="input-field-for-new-listing-form" type="text" name="image" value={this.state.image} placeholder="image"/>
+                    <input className="input-field-for-new-listing-form" type="text" name="image" readOnly value={this.state.image} placeholder="image"/>
                     <br></br>
                     <input className="radio-button-for-new-listing-form" type="radio" id="donation" name="type" value="Donation" onChange={this.formCompleted}/>
-                    <label for="donation">Donation</label>
+                    <label htmlFor="donation">Donation</label>
                     <br></br>
                     <input className="radio-button-for-new-listing-form" type="radio" id="request" name="type" value="Request" onChange={this.formCompleted}/>
-                    <label for="request">Request</label>
+                    <label htmlFor="request">Request</label>
                     <br></br>
                     <input className="submit-button-for-new-listing" type="submit" value="Submit" />
                     </form>

@@ -2,30 +2,32 @@ import React from 'react';
 
 export default class Home extends React.Component{
 
-
-
 state={
-    currentImage: 0
+    currentImage: 0,
 }
 
-componentDidMount=()=>{
+intervalId=0;
 
-    let settingInterval=()=>{
-        if(this.state.currentImage<=3){
-            this.setState({
-                currentImage: this.state.currentImage + 1
-                    })
-        }
-
-        else{
-            this.setState({
-                currentImage: this.state.currentImage-4
-            })
-        }
+settingInterval=()=>{
+    if(this.state.currentImage<=3){
+        this.setState({
+            currentImage: this.state.currentImage + 1
+                })
     }
 
-        setInterval(settingInterval, 3000)
-        
+    else{
+        this.setState({
+            currentImage: this.state.currentImage-4
+        })
+    }
+}
+
+componentDidMount=()=>{   
+      this.intervalId= setInterval(this.settingInterval, 3000); 
+}
+
+componentWillUnmount=()=>{
+    clearInterval(this.intervalId);
 }
 
 renderImages=()=>{
@@ -43,9 +45,6 @@ renderImages=()=>{
         <p>{medicalSupplies[this.state.currentImage].name}</p>
     </div>
 }
-
-
-
 
     render(){
         return(
